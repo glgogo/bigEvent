@@ -4,10 +4,15 @@ $(function () {
 
     // 退出登录
     $('#btn_logout').on('click', function () {
-        // 1.跳转至登录页面
-        location.href = '../../login.html';
-        // 2.清空localStorage 中 token 属性
-        localStorage.removeItem('token');
+        layer.confirm('确认退出?', { icon: 3, title: '提示' }, function (index) {
+            // 1.跳转至登录页面
+            location.href = '../../login.html';
+            // 2.清空localStorage 中 token 属性
+            localStorage.removeItem('token');
+
+            layer.close(index);
+        });
+
     })
 })
 
@@ -58,9 +63,11 @@ function getUserInfo() {
 
 // 渲染用户头像函数
 function renderAvatar(user) {
+
     // 1.如果有图片地址，将图片地址渲染为头像
     if (user.user_pic !== null) {
         $('.layui-nav-img').attr('src', user.user_pic);
+        $('.head_welcome').html('欢迎 ' + user.nickname);
         $('.head_pic').hide()
     } else {
         // 2.如果没有图片地址，将用户名第一个字母作为头像展示

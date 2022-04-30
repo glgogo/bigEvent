@@ -41,6 +41,9 @@ $(function () {
             url: '/api/login',
             data: data,
             success: function (res) {
+                if (res.status != 0) {
+                    return layer.msg(res.message);
+                }
                 layer.msg(res.message);
                 localStorage.setItem('token', res.token);
                 setTimeout(() => {

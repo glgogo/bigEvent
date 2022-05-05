@@ -1,0 +1,17 @@
+/* 使用flex布局，将标题与添加分类按钮 左右分布 */
+.layui-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* 标题字体加粗 */
+.layui-table th {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.layui-form {
+    padding-top: 20px;
+    padding-right: 30px;
+}
